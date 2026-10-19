@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskPulse — Type-Safe Task Tracker</title>
+  <meta name="description" content="A fast, type-safe task manager driven by a strictly typed TypeScript logic layer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">TaskPulse</h1>
+          <p class="brand-subtitle">Powered by TypeScript Typed Logic</p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Counter -->
+      <div class="metrics-bar" id="metrics-bar">
+        <div class="metric-pill">
+          <span class="metric-label">Total</span>
+          <span class="metric-value" id="metric-total">0</span>
+        </div>
+        <div class="metric-pill">
+          <span class="metric-label">Completed</span>
+          <span class="metric-value metric-success" id="metric-done">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Card -->
+    <main class="app-card">
+      <!-- Task Creation Form -->
+      <form id="task-form" class="task-form" autocomplete="off">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="task-title"
+            name="taskTitle"
+            placeholder="What needs to be done next?"
+            aria-label="New task title"
+            required
+            maxlength="120"
+          />
+        </div>
+        <button type="submit" id="add-btn" class="btn btn-primary" aria-label="Add Task">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Add Task</span>
+        </button>
+      </form>
+
+      <!-- Filter Bar -->
+      <div class="filters-container" role="toolbar" aria-label="Task status filters">
+        <div class="filters-label">Filter:</div>
+        <div class="filter-chips">
+          <button type="button" class="filter-btn active" data-filter="all" id="filter-all">
+            All <span class="filter-count" id="count-all">0</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="todo" id="filter-todo">
+            To Do <span class="filter-count" id="count-todo">0</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="in-progress" id="filter-in-progress">
+            In Progress <span class="filter-count" id="count-in-progress">0</span>
+          </button>
+          <button type="button" class="filter-btn" data-filter="done" id="filter-done">
+            Done <span class="filter-count" id="count-done">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Task List Container -->
+      <div class="tasks-wrapper">
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state" hidden>
+          <div class="empty-icon">📋</div>
+          <h2 class="empty-title" id="empty-title">No tasks found</h2>
+          <p class="empty-desc" id="empty-desc">Create your first task above to get moving!</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>TypeTasks Part 2 • Zero type errors, 100% strictly typed TypeScript</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
